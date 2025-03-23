@@ -16,12 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
-from ecommerce import views as ecom_views
-
+from ecommerce.views import user_view
+from ecommerce.views import product_all_view
+from ecommerce.views import product_by_id_view
+from ecommerce.views import comments_by_product_id_view
+from ecommerce.views import summarize_view
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path("ecommerce/", ecom_views.ecommerce_index_view),
-    path("ecommerce/item/<item_id>", ecom_views.item_view)
-
+    path('user/<username>/', user_view),
+    path('product/all/', product_all_view),
+    path('product/byId/<int:id>/', product_by_id_view),
+    path('comment/byProductId/<int:id>/', comments_by_product_id_view),
+    path('summarize/', summarize_view)
 ]
